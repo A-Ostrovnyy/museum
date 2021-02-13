@@ -1,0 +1,54 @@
+.header {
+    width: 100%;
+    padding: 26px 0;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.header_rightCol {
+    display: flex;
+    flex-flow: row wrap;
+
+    .langSwitcher {
+        margin-left: 18px;
+    }
+}
+
+.header_account {
+    width: 3rem;
+    height: 3rem;
+    max-width: 48px;
+    max-height: 48px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    transition: .3s background ease-out;
+    margin-left: 30px;
+
+    &:hover {
+        background: $purple;
+
+        svg {
+            color: $white;
+
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    svg {
+        width: 100%;
+        object-fit: contain;
+
+        path {
+            transition: .3s fill ease-out;
+            fill: $black;
+        }
+    }
+}
