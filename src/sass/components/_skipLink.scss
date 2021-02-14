@@ -1,0 +1,16 @@
+.skiplink {
+    position: absolute;
+    font-size: 1.18rem;
+    line-height: 1.2;
+    padding: 10px 15px;
+    color: $white;
+    background: $purple;
+    text-decoration: none;
+    transition: .3s transform ease-out;
+    border-radius: 4px;
+    transform: translateY(-3rem);
+
+    &:focus {
+        transform: translateY(20px);
+    }
+}
