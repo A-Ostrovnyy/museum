@@ -1,0 +1,66 @@
+.subscribe {
+    legend {
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+        line-height: 1.16;
+    }
+}
+
+.subscribe_emailWrap {
+    margin-bottom: 1rem;
+}
+
+.subscribe_labelText {
+    display: block;
+}
+
+.footer_input {
+    margin-right: 19px;
+    padding: 12px;
+    font-size: 1.375rem;
+    line-height: 1.18;
+    border: 2px solid transparent;
+    border-bottom-color: $black;
+    box-shadow: none;
+    background: transparent;
+    color: $black;
+    transition: 0.3s border-color ease-out;
+
+    &:hover {
+        border-color: $black;
+    }
+}
+
+.subscribe_btn {
+    padding: 12px 20px;
+    font-size: 1.125rem;
+    line-height: 1.1;
+    color: $black;
+    background: $purple;
+    color: $white;
+    border-radius: 4px;
+}
+
+.subscribe_agreeLabel {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    cursor: pointer;
+
+    &:hover {
+        .footer_checkboxLabel {
+            text-decoration: underline;
+        }
+    }
+}
+
+.footer_checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.footer_checkboxLabel {
+    font-size: 1rem;
+    line-height: 1.17;
+}
