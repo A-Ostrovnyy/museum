@@ -9,6 +9,20 @@
     align-items: center;
 }
 
+.header_logoLink {
+    overflow: hidden;
+
+    &:hover,
+    &:focus {
+        .logo {
+            box-shadow: 0 0 0 3px $purple;
+        }
+    }
+
+    .logo {
+        box-shadow: 0 0 0 0 red;
+    }
+}
 
 .header_rightCol {
     display: flex;
@@ -34,6 +48,7 @@
         pointer-events: none;
     }
 
+    &:focus,
     &:hover {
         background: $purple;
 

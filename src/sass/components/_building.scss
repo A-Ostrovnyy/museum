@@ -23,8 +23,15 @@
 .building_link {
     font-size: 1rem;
     line-height: 1.2;
+    padding: 0.5rem 0;
+    transition: padding 0.3s ease-out;
 
+    &:focus,
     &:hover {
         text-decoration: none;
+        color: $white;
+        background: $purple;
+        border-radius: 4px;
+        padding: 0.5rem;
     }
 }

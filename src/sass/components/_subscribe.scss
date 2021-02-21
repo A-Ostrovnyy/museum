@@ -29,6 +29,10 @@
     &:hover {
         border-color: $black;
     }
+
+    &:focus {
+        border: 2px solid $purple;
+    }
 }
 
 .subscribe_btn {
@@ -36,9 +40,15 @@
     font-size: 1.125rem;
     line-height: 1.1;
     color: $black;
-    background: $purple;
-    color: $white;
+    background: $blue-1;
     border-radius: 4px;
+
+    &:hover,
+    &:focus {
+        color: $white;
+        background: $purple;
+        border-radius: 4px;
+    }
 }
 
 .subscribe_agreeLabel {
@@ -58,6 +68,15 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
+    transition: padding 0.3s ease-out;
+
+    &:focus {
+        & + .footer_checkboxLabel {
+            background: $purple;
+            color: $white;
+            padding: 0 0.5rem;
+        }
+    }
 }
 
 .footer_checkboxLabel {

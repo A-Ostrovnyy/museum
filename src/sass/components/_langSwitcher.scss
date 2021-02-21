@@ -17,6 +17,7 @@
         margin-right: 8px;
     }
 
+    &:focus,
     &:hover {
         text-decoration: none;
         color: $white;

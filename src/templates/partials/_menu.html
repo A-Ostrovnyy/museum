@@ -1,0 +1,28 @@
+{% set
+  menu = [
+    {
+      title: 'Музей',
+      link: '#'
+    },
+    {
+      title: 'Посетителям',
+      link: '#'
+    },
+    {
+      title: 'Выставки и события',
+      link: '#'
+    }
+  ]
+%}
+
+<nav class="menu">
+  <div class="container">
+    <ul class="menu_list" role="menu">
+      {% for item in menu %}
+        <li class="menu_item" role="none">
+          <a href="{{item.link}}" class="menu_link" role="menuitem">{{item.title}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
