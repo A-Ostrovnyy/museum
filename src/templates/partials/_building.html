@@ -1,0 +1,49 @@
+{% set
+  buildings = [
+    {
+      img: 'rickhter.jpg',
+      title: 'Мемориальная квартира с.т. рихтера',
+      address: 'ул. Большая Бронная, 2/6, 16 этаж, кв. 58',
+      link: '#'
+    },
+    {
+      img: 'museion.jpg',
+      title: 'ЦЭВ «МУСЕЙОН»',
+      address: 'Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)',
+      link: '#'
+    },
+    {
+      img: 'lopukhin.jpg',
+      title: 'УСАДЬБА ЛОПУХИНЫХ',
+      address: 'Малый Знаменский пер., 3/5с4',
+      link: '#'
+    },
+    {
+      img: 'museum.jpg',
+      title: 'УЧЕБНЫЙ МУЗЕЙ',
+      address: 'ул. Чаянова, 15',
+      link: '#'
+    },
+    {
+      img: 'collection.jpg',
+      title: 'ОТДЕЛ ЛИЧНЫХ КОЛЛЕКЦИЙ',
+      address: 'ул. Волхонка, 10',
+      link: '#'
+    },
+    {
+      img: 'gallery.jpg',
+      title: 'ГАЛЕРЕЯ',
+      address: 'ул. Волхонка, 14',
+      link: '#'
+    }
+  ]
+%}
+
+{% for item in buildings %}
+  <article class="building">
+    <img src="img/{{item.img}}" alt="Здание {{item.title}}" class="building_img">
+    <h3 class="building_title">{{item.title}}</h3>
+    <address class="building_address">{{item.address}}</address>
+    <a href="{{item.link}}" class="building_link">Подробнее</a>
+  </article>
+{% endfor %}

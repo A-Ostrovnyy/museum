@@ -1,0 +1,30 @@
+.building_img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.building_title {
+    font-size: 1.625rem;
+    line-height: 1.18;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.building_address {
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.building_link {
+    font-size: 1rem;
+    line-height: 1.2;
+
+    &:hover {
+        text-decoration: none;
+    }
+}

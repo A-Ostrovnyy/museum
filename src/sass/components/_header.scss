@@ -30,6 +30,10 @@
     transition: .3s background ease-out;
     margin-left: 30px;
 
+    * {
+        pointer-events: none;
+    }
+
     &:hover {
         background: $purple;
 

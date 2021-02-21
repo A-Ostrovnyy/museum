@@ -1,0 +1,28 @@
+<div class="modal">
+  <section class="modal_inner" role="dialog" aria-label="Вход">
+    <form class="login">
+      {{mixins.title('Вход')}}
+      <label class="login_label login_label--login">
+        <span class="login_labelText" tabindex="-1">Логин</span>
+        <input
+          type="text"
+          name="login"
+          class="login_input login_input--login"
+          required
+          aria-required="true"
+        >
+      </label>
+      <label class="login_label login_label--password">
+        <span class="login_labelText" tabindex="-1">Пароль</span>
+        <input
+          type="password"
+          name="login"
+          class="login_input login_input--password"
+          required
+          aria-required="true"
+        >
+      </label>
+      <button class="login_submit" type="submit">Вход</button>
+    </form>
+  </section>
+</div>

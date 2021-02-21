@@ -1,3 +1,7 @@
-import sayHello from './lib/sayHello';
+import { initModal } from './lib/modal';
+import { initTabs } from './lib/tabs';
 
-sayHello();
+const automaticTabs = document.querySelector('.museum');
+
+initModal();
+initTabs(automaticTabs);
