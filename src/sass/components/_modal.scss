@@ -60,6 +60,7 @@
     border: 1px solid #C7D2E9;
     background: #F9F9FB;
 
+    &:hover,
     &:focus {
         border: 2px solid $purple;
     }
@@ -76,4 +77,10 @@
 .login_submit {
     text-align: center;
     background: $blue-1;
+
+    &:hover,
+    &:focus {
+        background: $purple;
+        color: $white;
+    }
 }
