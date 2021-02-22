@@ -1,8 +1,15 @@
+import "wicg-inert";
+
+
 export function initModal() {
   const $body = document.querySelector('body');
+  const $outputContainer = document.querySelector('.out');
   const $modal = document.querySelector('.modal');
   const $loginForm = document.querySelector('.login');
   const $loginBtn = document.querySelector('.header_account');
+  const $modalTitle = $modal.querySelector('sectionTitle');
+
+  $modal.inert = false;
 
   function openModal() {
     const loginLabels = document.querySelectorAll('.login_label');
@@ -13,6 +20,13 @@ export function initModal() {
       const $input = label.querySelector('.login_input');
       $input.addEventListener('blur', validateFields);
     });
+    Array.from($outputContainer.children).forEach((child) => {
+      if (!child.closest('.modal')) {
+        child.inert = true;
+      }
+    });
+    $modal.inert = false;
+    $modalTitle.focus();
   }
 
   function initCloseModal(e) {
@@ -24,6 +38,13 @@ export function initModal() {
   function closeModal() {
     $modal.classList.remove('modal--active');
     $body.classList.remove('body--noScroll');
+    Array.from($outputContainer.children).forEach((child) => {
+      if (!child.closest('.modal')) {
+        child.inert = false;
+      }
+    });
+    $modal.inert = true;
+    $loginBtn.focus();
     document.removeEventListener('keyup', initCloseModal);
     $loginForm.removeEventListener('submit', submitForm);
   }
