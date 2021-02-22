@@ -13,6 +13,7 @@ export function initModal() {
 
   function openModal() {
     const loginLabels = document.querySelectorAll('.login_label');
+
     $modal.classList.add('modal--active');
     $body.classList.add('body--noScroll');
     document.addEventListener('keyup', initCloseModal);
@@ -20,6 +21,7 @@ export function initModal() {
       const $input = label.querySelector('.login_input');
       $input.addEventListener('blur', validateFields);
     });
+    $loginForm.addEventListener('submit', submitForm);
     Array.from($outputContainer.children).forEach((child) => {
       if (!child.closest('.modal')) {
         child.inert = true;
@@ -52,50 +54,72 @@ export function initModal() {
   $loginBtn.addEventListener('click', ({ target }) => {
     if (target.classList.contains('header_account')) {
       openModal();
-      $loginForm.addEventListener('submit', submitForm);
     }
   });
 
   function createErrorMsg(context, text) {
     const $inputLabel = context.closest('.login_label');
-    const $error = document.createElement('span');
-    context.classList.add('invalid');
-    $error.classList.add('login_errorMsg');
-    $error.innerText = text;
+    const $errorMsgWrap = $inputLabel.querySelector('.login_errorMsg');
+
+    if ($errorMsgWrap) {
+      $errorMsgWrap.innerText = '';
+      $errorMsgWrap.innerText = text;
+    } else {
+      const $error = document.createElement('span');
+      context.classList.add('invalid');
+      $error.classList.add('login_errorMsg');
+      $error.innerText = text;
+      $inputLabel.appendChild($error);
+    }
+
     $inputLabel.classList.add('inValid');
-    $inputLabel.appendChild($error);
   }
 
   function validateFields() {
+    // debugger
     if (this.getAttribute('type') === 'text') {
       if (this.value === '') {
         const loginErrorMsg = 'Введите свой логин';
         createErrorMsg(this, loginErrorMsg);
       } else {
-        this.closest('.login_label').classList.remove('invalid');
-        this.classList.remove('invalid');
-        this.classList.add('valid');
-        console.log('valid value');
+        setValidValue(this);
+        console.log('valid text value');
         //TODO add icons on valid/invalid state
       }
     } else if( this.getAttribute('type') === 'password') {
-      // const $inputLabel = document.querySelector('.login_label--password');
-      // $passwordLabel.append(`<span class="login_errorMsg">${loginErrorMsg}</span>`)
-      // this.classList.add('valid');
+      const pattern = /(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*/;
+      if (this.value === '') {
+        const passwordErrorMsg = 'Введите ваш пароль';
+        createErrorMsg(this, passwordErrorMsg);
+      } else if (this.value !== '' && !this.value.match(pattern)) {
+        const passwordErrorMsg = 'Ваш пароль должен состоять из заглавных, строчных букв, цифр и спец символов и длинной больше 6 символов';
+        createErrorMsg(this, passwordErrorMsg);
+      } else {
+        setValidValue(this);
+        console.log('valid password value');
+
+      }
     }
   }
 
-  function submitForm(e) {
-    e.preventDefault();
+  function setValidValue(context) {
+    const $labelWrap = context.closest('.login_label');
+    const $msgWrap = $labelWrap.querySelector('.login_errorMsg');
+    $msgWrap && $msgWrap.remove();
+    $labelWrap.classList.remove('invalid');
+    context.classList.remove('invalid');
+    context.classList.add('valid');
+  }
+
+  function submitForm() {
+    event.preventDefault();
     const $loginInputs = document.querySelectorAll('.login_input');
-    const $submitBtn = document.querySelectorAll('.login_submit');
+    const isValid = Array.from($loginInputs).every((input) => input.classList.contains('valid'));
 
-    const isValid = $loginInputs.every((input) => input.classList.contains('valid'));
-
-    isValid && $submitBtn.removeAttribute('disable');
-
-    alert('Форма успешно отправлена');
-    closeModal();
+    if (isValid) {
+      alert('Форма успешно отправлена');
+      closeModal();
+    }
   }
 
 }
